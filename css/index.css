@@ -1,0 +1,63 @@
+@charset 'utf-8';
+
+html{
+    font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+}
+
+body{
+    /* 기본적으로 가로 스크롤이 생기지 않도록 구현 */
+    overflow-x: hidden;
+    color : rgb(29, 29, 31);
+    letter-spacing: -0.05em;
+    background: white;
+
+}
+
+p{
+    line-height: 1.6;
+}
+
+a{
+    color:rgb(29, 29, 31);
+    text-decoration: none;
+}
+
+.first-nav{
+    width: 100%;
+    height: 44px;
+    padding : 0 1rem;
+}
+.first-nav-links, .second-nav-links{
+    max-width: 1000px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.first-nav-links{
+    justify-content: space-between;
+}
+
+
+.second-nav{
+    width: 100%;
+    padding : 0 1rem;
+    height: 52px;
+    border-bottom:1px solid #ddd;
+}
+
+.second-nav-links .main-logo{ 
+    margin-right:auto;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+
+.second-nav-links a{
+    font-size: 0.8rem;
+}
+.second-nav-links a:not(.main-logo){
+    margin-left: 2em;
+}
