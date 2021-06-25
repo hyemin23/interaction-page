@@ -1,107 +1,158 @@
 @charset 'utf-8';
 
-html{
-    font-family: 'Noto Sans KR', sans-serif;
+html {
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 14px;
 }
-
-body{
-    /* 기본적으로 가로 스크롤이 생기지 않도록 구현 */
-    overflow-x: hidden;
-    color : rgb(29, 29, 31);
-    letter-spacing: -0.05em;
-    background: white;
-
+body {
+	overflow-x: hidden;
+	color: rgb(29, 29, 31);
+	letter-spacing: -0.05em;
+	background: white;
+}
+p {
+	line-height: 1.6;
+}
+a {
+	color: rgb(29, 29, 31);
+	text-decoration: none;
 }
 
-p{
-    line-height: 1.6;
+.global-nav {
+	width: 100%;
+	height: 44px;
+	padding: 0 1rem;
+}
+.local-nav {
+	width: 100%;
+	height: 52px;
+	padding: 0 1rem;
+	border-bottom: 1px solid #ddd;
 }
 
-a{
-    color:rgb(29, 29, 31);
-    text-decoration: none;
+.global-nav-links,
+.local-nav-links {
+	display: flex;
+	align-items: center;
+	max-width: 1000px;
+	height: 100%;
+	margin: 0 auto;
 }
 
-.container{
-
+.global-nav-links {
+	justify-content: space-between;
 }
-.first-nav{
-    width: 100%;
-    height: 44px;
-    padding : 0 1rem;
+.local-nav-links .product-name {
+	margin-right: auto;
+	font-size: 1.4rem;
+	font-weight: bold;
 }
-.first-nav-links, .second-nav-links{
-    max-width: 1000px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
+.local-nav-links a {
+	font-size: 0.8rem;
 }
-
-.first-nav-links{
-    justify-content: space-between;
+.local-nav-links a:not(.product-name) {
+	margin-left: 2em;
+}
+.scroll-section {
+	padding-top: 50vh;
 }
 
-
-.second-nav{
-    width: 100%;
-    padding : 0 1rem;
-    height: 52px;
-    border-bottom:1px solid #ddd;
+#scroll-section-0 h1 {
+	font-size: 4rem;
+	text-align: center;
 }
 
-.second-nav-links .main-logo{ 
-    margin-right:auto;
-    font-size: 1.4rem;
-    font-weight: bold;
+.main-message {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 35vh;
+	margin: 5px 0;
+	height: 3em;
+	font-size: 2.5rem;
 }
 
-
-.second-nav-links a{
-    font-size: 0.8rem;
+ p {
+	font-weight: bold;
+	text-align: center;
+	line-height: 1.2;
 }
-.second-nav-links a:not(.main-logo){
-    margin-left: 2em;
-}
-
-
-/* 공통 섹션 css */
-.scroll-section{
-    padding-top: 50vh;
+.main-message small {
+	display: block;
+	margin-bottom: 0.5em;
+	font-size: 1.2rem;
 }
 
 
-/* 1번 섹션 */
-#scroll-section-one h1{
-    font-size: 4rem;
-    text-align: center;
-}
 
-.main-message{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin : 5px 0;
-    height: 3em;
-    font-size: 2.5rem;
-}
 
-p{
-    font-weight: bold;
-    line-height: 1.2;
-    text-align: center;
+#scroll-section-2 .main-message {
+	font-size: 3.5rem;
 }
-
-.description{
+.description {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 1rem;
 	font-size: 1.2rem;
 	color: #888;
-    padding: 0 1rem;
+}
+.description strong {
+	float: left;
+	margin-right: 0.2em;
+	font-size: 3rem;
+	color: rgb(29, 29, 31);
+}
+.desc-message{
+    width: 50%;
+    font-weight: bold;
 }
 
-.description strong{
-    float: left;
-    margin-right: 0.2em;
-    font-size: 3rem;
-    color: rgb(29, 29, 31);
+.pin{
+    width: 1px;
+    height: 100px;
+    background: black;
+}
+
+
+.mid-message{
+    padding : 0 1rem;
+    font-size: 2rem;
+    color:#888;
+}
+
+.mid-message strong{
+    color : rgb(29, 29, 31);
+}
+
+.canvas-caption{
+    padding : 0 1rem;
+    font-size: 1.2rem;
+    color: #888;
+	
+}
+
+.sticky-elem{
+    position: fixed;
+	display: none;
+    top:0;
+	left:0;
+	width: 100%;
+}
+
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 7rem;
+	color: white;
+	background: darkorange;
+}
+
+@media (min-width:1024px){
+    #scroll-section-0 h1{
+        font-size: 9vw;
+    }
+    .main-message{
+        font-size: 4vw;
+    }
 }
