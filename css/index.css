@@ -23,6 +23,9 @@ a{
     text-decoration: none;
 }
 
+.container{
+
+}
 .first-nav{
     width: 100%;
     height: 44px;
@@ -60,4 +63,45 @@ a{
 }
 .second-nav-links a:not(.main-logo){
     margin-left: 2em;
+}
+
+
+/* 공통 섹션 css */
+.scroll-section{
+    padding-top: 50vh;
+}
+
+
+/* 1번 섹션 */
+#scroll-section-one h1{
+    font-size: 4rem;
+    text-align: center;
+}
+
+.main-message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin : 5px 0;
+    height: 3em;
+    font-size: 2.5rem;
+}
+
+p{
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.description{
+	font-size: 1.2rem;
+	color: #888;
+    padding: 0 1rem;
+}
+
+.description strong{
+    float: left;
+    margin-right: 0.2em;
+    font-size: 3rem;
+    color: rgb(29, 29, 31);
 }
