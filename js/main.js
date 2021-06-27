@@ -20,12 +20,13 @@
             scrollHeight: 0,
             objs: {
                 container: document.querySelector("#scroll-section-0")
-                , messageA: document.querySelector("#scroll-section-0 .maiin-message.a")
-                , messageB: document.querySelector("#scroll-section-0 .maiin-message.b")
-                , messageC: document.querySelector("#scroll-section-0 .maiin-message.c")
-                , messageD: document.querySelector("#scroll-section-0 .maiin-message.d")
+                , messageA: document.querySelector("#scroll-section-0 .main-message.a")
+                , messageB: document.querySelector("#scroll-section-0 .main-message.b")
+                , messageC: document.querySelector("#scroll-section-0 .main-message.c")
+                , messageD: document.querySelector("#scroll-section-0 .main-message.d")
             }
             , values: {
+                // messageA_opacity: [200, 900]
                 messageA_opacity: [0, 1]
                 ,
             }
@@ -128,7 +129,7 @@
 
         // 0,1고정이 아니라고 한다면, 예를들어 messageA_opacity가 200~900 까지의 범위를 가질 경우, 그 사이의 범위는 700이다.
         // 단, 0~700이 아닌 200부터 시작하여 700만큼 범위를 가져야 900 만큼 이동한다 이걸 식으로 표현하면
-        rv = scrollRatio * ((values[1] - values[0]) + values[0]);
+        rv = scrollRatio * (values[1] - values[0]) + values[0];
 
         return rv;
     }
@@ -140,14 +141,18 @@
         const currentYOffset = yOffset - prevScrollHeight;
 
 
+        // 스크롤 값에 따라서 해당 타겟의 투명도 조절
         switch (currentScene) {
             case 0:
                 // calcValues();
                 //어디서 부터 시작하는지에 대한 값들 저장
-                let messageA_opacity_0 = values.messageA_opacity[0];
-                let messageA_opacity_1 = values.messageA_opacity[1];
+                let messageA_opacity_in = calcValues(values.messageA_opacity, currentYOffset);
 
-                calcValues(values.messageA_opacity, currentYOffset);
+                console.log(objs.messageA);
+
+                //투명도 설정
+                objs.messageA.style.opacity = messageA_opacity_in;
+
                 break;
 
             case 1:
