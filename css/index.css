@@ -126,6 +126,15 @@ a {
     background: black;
 }
 
+#scroll-section-2 .b{
+	top : 10%;
+	left:40%;
+}
+#scroll-section-2 .b{
+	top : 15%;
+	left : 45%;
+}
+
 
 .mid-message{
     padding : 0 1rem;
@@ -147,7 +156,7 @@ a {
 .sticky-elem{
     position: fixed;
 	display: none;
-    top:0;
+    /* top:0; */
 	left:0;
 	width: 100%;
 }
@@ -168,4 +177,13 @@ a {
     .main-message{
         font-size: 4vw;
     }
+
+
+	#scroll-section-2 .b{
+		top : 20%;
+		left: 53%;
+	}
+	#scroll-section-2 .b{
+		left : 55%;
+	}
 }
