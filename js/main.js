@@ -27,8 +27,16 @@
                 , messageB: document.querySelector("#scroll-section-0 .main-message.b")
                 , messageC: document.querySelector("#scroll-section-0 .main-message.c")
                 , messageD: document.querySelector("#scroll-section-0 .main-message.d")
+                , canvas: document.querySelector("#video-canvas-0")
+                , context: document.querySelector("#video-canvas-0").getContext('2d')
+                //이미지를 담아둘 배열
+                , videoImages : []
             }
             , values: {
+                //이미지 개수
+                videoImageCount: 300,
+                //이미지 순서
+                imageSequence : [0,299],
                 // messageA_opacity: [200, 900]
                 messageA_opacity_in: [0, 1, {
                     //start, end 는 애니메이션이 적용되는 구간을 설정함 (비율로)
@@ -75,6 +83,18 @@
             }
         },
     ];
+
+    function setCanvasImages() {
+        for (let i = 0; i < sceneInfo[0].values.videoImageCount; i++){
+            imgElem = new Image();
+            imgElem.src = `../video/001/IMG_${6727 + i}.JPG`;
+            sceneInfo[0].objs.videoImages.push(imgElem);
+        }
+
+        console.log(sceneInfo[1].objs.videoImages);
+    }
+
+    setCanvasImages();
 
     function setLayout() {
 
@@ -208,7 +228,7 @@
                 }
                     
                 break;
-           
+            
             case 2:
                 console.log("2")
                 break;
