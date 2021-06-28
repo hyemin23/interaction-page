@@ -87,11 +87,11 @@
     function setCanvasImages() {
         for (let i = 0; i < sceneInfo[0].values.videoImageCount; i++){
             imgElem = new Image();
-            imgElem.src = `../video/001/IMG_${6727 + i}.JPG`;
+            imgElem.src = `video/001/IMG_${6726+i}.JPG`;
             sceneInfo[0].objs.videoImages.push(imgElem);
         }
 
-        console.log(sceneInfo[1].objs.videoImages);
+        console.log("비디오주소 : " , sceneInfo[0].objs.videoImages);
     }
 
     setCanvasImages();
@@ -104,13 +104,10 @@
            
             //sticky인 경우에만 높이 조절
             if (sceneInfo[i].type === 'sticky') {
-                console.log("스티키")
                 sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
             } else if (sceneInfo[i].type === 'normal') {
-                console.log("노말")
                 sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.offsetHeight;
             }
-            console.log("else문")
             sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
         }
 
@@ -130,6 +127,10 @@
             }
         }
         document.body.setAttribute('id', `show-scene-${currentScene}`);
+  
+       
+		const heightRatio = window.innerHeight / 1080;
+		sceneInfo[0].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
     }
 
 
@@ -209,12 +210,16 @@
         // 현재씬에서 얼마나 scroll 했는지 / 현재씬의 scrollHeight
         const scrollRatio =currentYOffset / scrollHeight;
 
-
-
-        // 스크롤 값에 따라서 해당 타겟의 투명도 조절
         switch (currentScene) {
+            //0번 section
             case 0:
 
+                //canvas
+                let sequence = Math.round(calcValues(values.imageSequence, currentYOffset));
+                
+                objs.context.drawImage(objs.videoImages[sequence],0,0);
+
+                // 스크롤 값에 따라서 해당 타겟의 투명도 조절
                 //스크롤 전 후 기준점을 임의로 0.22로 잡음 (0.2와 0.25의 중간 값)
                 if (scrollRatio <= 0.22) {
                     //in
@@ -249,6 +254,10 @@
         scrollLoop();
     });
 
-    window.addEventListener('load', setLayout);
+    window.addEventListener('load', () => {
+        setLayout();
+        sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
+
+    });
 
 })();

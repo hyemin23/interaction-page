@@ -69,6 +69,9 @@ a {
 #scroll-section-0 h1 {
 	font-size: 4rem;
 	text-align: center;
+	position: relative;
+	top : -10vh;
+	z-index: 5;
 }
 
 .main-message {
@@ -165,7 +168,13 @@ a {
 
 .sticky-elem-canvas{
 	top : 0;
-	background-color: #ccc;
+	height: 100%;
+}
+
+.sticky-elem-canvas canvas{
+	position: absolute;
+	top : 50%;
+	left : 50%;
 }
 
 .footer {
