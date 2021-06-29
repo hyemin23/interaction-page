@@ -390,8 +390,9 @@ function calcValues(values, currentYOffset) {
             case 3:
                 //가로세로 모두 꽉 차게 하기 위해 여기서 세팅 ( 계산 필요 )
                 //원래 canvas 크기 와 window의 너비 및 높이 비율 계산
-                const widthRatio  =  window.innerWidth / objs.canvas.width;
+                const widthRatio = window.innerWidth / objs.canvas.width;
                 const heigthRation = window.innerHeight / objs.canvas.height;
+
                 let canvasScaleRation;
 
 
@@ -403,6 +404,8 @@ function calcValues(values, currentYOffset) {
                     //캔버스보다 브라우저 창이 납작한 경우 
                     canvasScaleRation = widthRatio;
                 }
+                // console.log(" window.innerWidth", window.innerWidth); 740px
+                // console.log("widthRatio", widthRatio); 0.38541
 
                 // 임의로 캔버스 크기를 화면 크기에 맞춤
                 objs.canvas.style.transform = `scale(${canvasScaleRation})`;
@@ -411,19 +414,33 @@ function calcValues(values, currentYOffset) {
 
 
                 //컨버스 사이즈에 맞춰 가정한 innerWidth와 innerHeight
+                //원래 비율 찾기
                 const recalculatedInnerWidth = window.innerWidth / canvasScaleRation;
                 const recalculatedInnerHeight = window.innerHeight / canvasScaleRation;
+
+                console.log("recalculatedInnerWidth", recalculatedInnerWidth); //1920
 
                 //캔버스 영역에서 하얀색 캔버스 box그리기 15%짜리
                 const whiteRectWidth = recalculatedInnerWidth * 0.15;
 
-                //시작위치
-                values.rect1X[0] = (objs.canvas.width - recalculatedInnerWidth) / 2;
-                values.rect1X[1] = values.rect1X[0] - whiteRectWidth;
-                values.rect2X[0] = values.rect1X[0] + recalculatedInnerWidth - whiteRectWidth;
-                values.rect2X[1] = values.rect2X[0] + whiteRectWidth;
-
                 
+                //0번은 출발값 (박스들이 처음 setting 된 값)
+                console.log((objs.canvas.width - recalculatedInnerWidth) / 2);
+                values.rect1X[0] = (objs.canvas.width - recalculatedInnerWidth) / 2;
+                //애니메이션이 끝났을 때 최종 값
+                values.rect1X[1] = values.rect1X[0] - whiteRectWidth;
+                
+                console.log("values.rect1X[0]",values.rect1X[0]);
+                // console.log(whiteRectWidth);
+
+                //0번은 출발값 (박스들이 처음 setting 된 값)
+                values.rect2X[0] = values.rect1X[0] + recalculatedInnerWidth - whiteRectWidth;
+                values.rect2X[1] = values.rect2X[0] + whiteRectWidth; 
+
+                //좌우 흰색 박스 그리기
+                // x , y , width , height
+                objs.context.fillRect(values.rect1X[0], 0, parseInt(whiteRectWidth), objs.canvas.height);
+                objs.context.fillRect(values.rect2X[0], 0, parseInt(whiteRectWidth),objs.canvas.height);
                 
 
                 break;
