@@ -392,9 +392,7 @@ function calcValues(values, currentYOffset) {
                 //원래 canvas 크기 와 window의 너비 및 높이 비율 계산
                 const widthRatio = window.innerWidth / objs.canvas.width;
                 const heigthRation = window.innerHeight / objs.canvas.height;
-
                 let canvasScaleRation;
-
 
                 //비율에 따라서 canvas의 크기 조절
                 if (widthRatio <= heigthRation) {
@@ -404,34 +402,37 @@ function calcValues(values, currentYOffset) {
                     //캔버스보다 브라우저 창이 납작한 경우 
                     canvasScaleRation = widthRatio;
                 }
-                // console.log(" window.innerWidth", window.innerWidth); 740px
-                // console.log("widthRatio", widthRatio); 0.38541
 
                 // 임의로 캔버스 크기를 화면 크기에 맞춤
+                // 확대가 아닌 x의 위치를 계산해줌
+
                 objs.canvas.style.transform = `scale(${canvasScaleRation})`;
+                
                 // 이미지 배열에 담겨져 있는 첫 번째 이미지를 캔버스로 그린다.
                 objs.context.drawImage(objs.images[0], 0, 0);
 
 
                 //컨버스 사이즈에 맞춰 가정한 innerWidth와 innerHeight
-                //원래 비율 찾기
+                //원래 비율(canvas) 찾기
+
                 const recalculatedInnerWidth = window.innerWidth / canvasScaleRation;
+                
                 const recalculatedInnerHeight = window.innerHeight / canvasScaleRation;
 
-                console.log("recalculatedInnerWidth", recalculatedInnerWidth); //1920
-
-                //캔버스 영역에서 하얀색 캔버스 box그리기 15%짜리
+                //캔버스 영역에서 하얀색 캔버스 box그리기 15%짜리 변수 선언
                 const whiteRectWidth = recalculatedInnerWidth * 0.15;
-
                 
                 //0번은 출발값 (박스들이 처음 setting 된 값)
-                console.log((objs.canvas.width - recalculatedInnerWidth) / 2);
                 values.rect1X[0] = (objs.canvas.width - recalculatedInnerWidth) / 2;
-                //애니메이션이 끝났을 때 최종 값
+                
+
+
+                //1X의 최종값은 출발점의 폭의 넓이px - 그 출발점의 폭의 넓이만큼 또 빼주면 됨 (왼쪽으로 이동해서 안 보이게끔 해야하므로)
                 values.rect1X[1] = values.rect1X[0] - whiteRectWidth;
                 
-                console.log("values.rect1X[0]",values.rect1X[0]);
-                // console.log(whiteRectWidth);
+
+                console.log("values.rect1X[0]", values.rect1X[0]);
+                console.log(whiteRectWidth);
 
                 //0번은 출발값 (박스들이 처음 setting 된 값)
                 values.rect2X[0] = values.rect1X[0] + recalculatedInnerWidth - whiteRectWidth;
